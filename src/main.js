@@ -1,4 +1,13 @@
-import { createApp } from 'vue'
 import App from './App.vue'
+import { createApp } from 'vue'
+import mitt from 'mitt'
+import './index.css'
 
-createApp(App).mount('#app')
+import { VueMasonryPlugin } from "vue-masonry";
+
+const emitter = mitt();
+let app = createApp(App)
+app.config.globalProperties.emitter = emitter;
+app.use(VueMasonryPlugin);
+
+app.mount('#app')
